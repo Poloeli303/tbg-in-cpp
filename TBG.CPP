@@ -340,6 +340,71 @@ int main() {
             else
                 cout << "sorry not an option" << endl;
             break;
+ 
+        case 21:
+            cout << "You go up the stairs and find your self at a brown cracking door. Do you wish to continue? Press 's' to go straight or 'b' to go back. Press 'i' for inventory." << endl;
+            cin >> input;
+            if (input == "s")
+                room = 22;
+            else if (input == "b")
+                room = 17;
+            else if (input == "i") {
+                cout << "Here is your inventory:" << endl;
+                for (int i = 0; i < 10; i++)
+                    cout << inventory[i] << endl;
+                cout << endl << endl;
+            }
+
+            else
+                cout << "sorry, not an option" << endl;
+            break;
+          case 22:
+            cout << "You go through the door and see your in the kitchen. The old brown door slams shut theres no way back. There are two ways to go either right (r) or left (l). Press 'i' for inventory." << endl;
+            cin >> input;
+            if (input == "r")
+                room = 23;
+            else if (input == "l")
+                room = 24;
+            else if (input == "i") {
+                cout << "Here is your inventory:" << endl;
+                for (int i = 0; i < 10; i++)
+                    cout << inventory[i] << endl;
+                cout << endl << endl;
+            }
+            else if (input.compare("back") == 0 || input.compare("b") == 0) {
+                if (inventory[0].compare("nada") != 0)
+                    cout << "the door is locked" << endl;
+                else
+                    room =22;
+            }
+            else
+                cout << "sorry, not an option" << endl;
+            break;
+          case 23:
+            cout << "You go right and realize your in the living room. You look to the left because you hear the tv on. There is a man sitting on the couch. As you try to walk back the floor creaks. He gets up to find that you have escaped and kills you." << endl;
+            health = 0;
+            break;
+          case 24:
+            cout << "You go to the left and see a door leading outside you can go through it by pressing 's' or back (b). Press 'i' for inventory." << endl;
+            cin >> input;
+            if (input == "s")
+                room = 25;
+            else if (input == "b")
+                room = 22;
+            else if (input == "i") {
+                cout << "Here is your inventory:" << endl;
+                for (int i = 0; i < 10; i++)
+                    cout << inventory[i] << endl;
+                cout << endl << endl;
+            }
+
+            else
+                cout << "sorry, not an option" << endl;
+            break;
+          case 25:
+              cout << "You can run away now gooo!!!" << endl;
+              health = 0;
+                  break;
         }
 
     }//end game loop
