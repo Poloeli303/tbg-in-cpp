@@ -1,7 +1,10 @@
 #include <iostream>
+#include <Windows.h>
 using namespace std;
 int health = 100;
 int turns = 0;
+void NPC(); //function declaration
+void ColorRandomizer();
 int main() {
     int room = 1;
     string inventory[10];
@@ -15,7 +18,11 @@ int main() {
         case 1:
             cout << "You're in the room again but you want to escape. You see a door and a vent. Where will you go? Press d for door and v for vent. Press i to see your inventory." << endl;
             cin >> input;
-            if (input == "d")
+            if (input == "giveall") {
+                inventory[0] = "key";
+                inventory[1] = "wirecutters";
+            }
+            else if (input == "d")
                 room = 2;
             else if (input == "v")
                 room = 9;
@@ -136,6 +143,7 @@ int main() {
                 cout << "sorry not an option" << endl;
             break;
         case 8:
+            system("Color 40");//function call
             cout << "You are in another room but you get caught in a bear trap and get injured. You can go back (b) and straight (s). Press i for inventory." << endl;
             health -= 20;
             cin >> input;
@@ -185,8 +193,11 @@ int main() {
                 cout << "sorry not an option" << endl;
             break;
         case 11:
-            cout << "You find yourself in front of a mouse. You kill it. You can go left (l) ot back (b). Press i for inventory." << endl;
+            NPC();
+            system("Color 40");//function call
+            cout << "As you start to go through the vents you hear animal noises. Unsure of what to do you continue. You can go left (l) ot back (b). Press i for inventory." << endl;
             cin >> input;
+            health -= 20;
             if (input == "b")
                 room = 10;
             else if (input == "l")
@@ -201,6 +212,7 @@ int main() {
                 cout << "sorry not an option" << endl;
             break;
         case 12:
+            system("Color 07");//function call
             cout << "You see a fan moving extremely fast and the only way you can get past it is if you cut the power off but you have nothing to cut the wires with you must find the wire cutters. You can go back (b) or straight (s)." << endl;
             cin >> input;
             if (input == "b")
@@ -237,8 +249,10 @@ int main() {
                 cout << "sorry not an option" << endl;
             break;
         case 14:
-            cout << "You are still in the vent but you encounter another mouse. You get bit but end up killing it. You can go back (b) or go straight (s)." << endl;
-            health -= 10;
+            NPC();
+            system("Color 40");//function call
+            cout << "You are still in the vent but you hear animal noises and get nervous. You can go back (b) or go straight (s)." << endl;
+            health -= 20;
             cin >> input;
             if (input == "s")
                 room = 15;
@@ -254,6 +268,7 @@ int main() {
                 cout << "sorry not an option" << endl;
             break;
         case 15:
+            system("Color 07");//function call
             cout << "You see a door on the ceiling and you lift it. It's a way out! You can go (up) or you can go back (b)." << endl;
             cin >> input;
             if (input == "up")
@@ -270,6 +285,7 @@ int main() {
                 cout << "sorry not an option" << endl;
             break;
         case 16:
+            system("Color 20");//function call
             cout << "You got out now run run far away!!! Press q to end game." << endl;
             cin >> input;
             if (input == "q");
@@ -291,6 +307,7 @@ int main() {
                 cout << "sorry not an option" << endl;
             break;
         case 18:
+            system("Color 07");//function call
             cout << "You are injured but must continue moving. You can go right (r) or back (b). Press i for inventory." << endl;
             cin >> input;
             if (input == "r")
@@ -307,6 +324,7 @@ int main() {
                 cout << "sorry not an option" << endl;
             break;
         case 19:
+            //ColorRandomizer();
             cout << "You are still injured and getting slower but you must continue moving. You can go straight (s) or back (b). Press i for inventory." << endl;
             cin >> input;
             if (input == "s")
@@ -375,12 +393,13 @@ int main() {
                 if (inventory[0].compare("nada") != 0)
                     cout << "the door is locked" << endl;
                 else
-                    room =22;
+                    room = 22;
             }
             else
                 cout << "sorry, not an option" << endl;
             break;
           case 23:
+              system("Color 04");//function call
             cout << "You go right and realize your in the living room. You look to the left because you hear the tv on. There is a man sitting on the couch. As you try to walk back the floor creaks. He gets up to find that you have escaped and kills you." << endl;
             health = 0;
             break;
@@ -390,7 +409,7 @@ int main() {
             if (input == "s")
                 room = 25;
             else if (input == "b")
-                room = 22;
+                room = 22;  
             else if (input == "i") {
                 cout << "Here is your inventory:" << endl;
                 for (int i = 0; i < 10; i++)
@@ -402,6 +421,7 @@ int main() {
                 cout << "sorry, not an option" << endl;
             break;
           case 25:
+              system("Color 20");//function call
               cout << "You can run away now gooo!!!" << endl;
               health = 0;
                   break;
@@ -409,4 +429,29 @@ int main() {
 
     }//end game loop
     cout << "Game over. Thanks for playing! Press q to end game." << endl;
+}
+void NPC() {
+    int num = rand() % 3 + 1;
+    switch (num) {
+    case 1:
+        cout << "a mouse appears!" << endl<<endl;
+        break;
+    case 2:
+        cout << "a spider appears!" << endl<<endl;
+        break;
+    case 3:
+        cout << "a snake appears!" << endl<<endl;
+        break;
+    }
+}
+void ColorRandomizer() {
+    int num = rand() % 4; //generates a num between 0-3
+    if (num == 0)
+        system("Color 2C");
+    if (num == 1)
+        system("Color 3B");
+    if (num == 2)
+        system("Color 2A");
+    if (num == 3)
+        system("Color 1C");
 }
