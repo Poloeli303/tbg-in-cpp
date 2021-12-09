@@ -16,7 +16,7 @@ int main() {
         turns++;
         switch (room) {
         case 1:
-            cout << "You're in the room again but you want to escape. You see a door and a vent. Where will you go? Press d for door and v for vent. Press i to see your inventory." << endl;
+            cout << "You're in the room again but you want to escape. You see a door and a vent. Where will you go? Press d for door and v for vent. You see bread to pick it up type 'bread'. Press i to see your inventory." << endl;
             cin >> input;
             if (input == "giveall") {
                 inventory[0] = "key";
@@ -31,6 +31,10 @@ int main() {
                 for (int i = 0; i < 10; i++)
                     cout << inventory[i] << endl;
                 cout << endl << endl;
+            }
+            else if (input.compare("bread") == 0) {
+                inventory[2] = "bread";
+                cout << "you picked up bread!" << endl << endl;
             }
 
             else
@@ -61,7 +65,7 @@ int main() {
                 cout << "sorry, not an option" << endl;
             break;
         case 3:
-            cout << "Your in another room. Press (b) to go back and (s) to go straight. Press i for inventory." << endl;
+            cout << "Your in another room. Press (b) to go back and (s) to go straight. You find a coin to pick it up type 'coin'. Press i for inventory." << endl;
             cin >> input;
             if (input == "b")
                 room = 2;
@@ -72,6 +76,10 @@ int main() {
                 for (int i = 0; i < 10; i++)
                     cout << inventory[i] << endl;
                 cout << endl << endl;
+            }
+            else if (input.compare("coin") == 0) {
+                inventory[3] = "coin";
+                cout << "you picked up the coin!" << endl << endl;
             }
             else
                 cout << "sorry not an option" << endl;
@@ -93,7 +101,7 @@ int main() {
                 cout << "sorry not an option" << endl;
             break;
         case 5:
-            cout << "You got past the guard and now you must continue. You can go back (b) and you can go straight (s). Press i for inventory." << endl;
+            cout << "You got past the guard and now you must continue. You can go back (b) and you can go straight (s).You find a keycard to pick it up type 'keycard'. Press i for inventory." << endl;
             cin >> input;
             if (input == "b")
                 room = 2;
@@ -104,6 +112,10 @@ int main() {
                 for (int i = 0; i < 10; i++)
                     cout << inventory[i] << endl;
                 cout << endl << endl;
+            }
+            else if (input.compare("keycard") == 0) {
+                inventory[4] = "keycard";
+                cout << "you picked up the keycard!" << endl << endl;
             }
             else
                 cout << "sorry not an option" << endl;
